@@ -1,0 +1,208 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap');
+
+*{
+    font-family: 'Roboto', 'Roboto';
+    overflow-x: hidden;
+}
+
+.ui-form {
+  
+    border: 1px solid #E4E4E4; 
+    display: flex;
+    justify-content: center;
+
+
+   width: 100%;
+
+}
+.custom-input{
+    width:100%;
+    display: flex;
+}
+
+.custom-input label{
+    font-weight: bold;
+}
+
+.custom-input input{
+    border-radius: 4px;
+    width: 50px;
+    margin:0 1rem;
+    text-align: center;
+}
+
+#content-form{
+    display: none;
+}
+
+#content-table{
+    display: none;
+}
+
+#content-activate{
+    display: block;
+}
+
+.action .btn{
+    min-width:20px;
+}
+
+.text-white{
+    color:white!important;
+}
+
+.modal-header{
+    display: unset!important;
+}
+
+.main-modal{
+    position: absolute;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.582);
+    top:0px;
+    width: 100%;
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.5s;
+    display: none;
+}
+
+.main-modal.active{
+    opacity: 1;
+    transition: opacity 0.5s;
+    z-index: 2;
+}
+
+.copy-header{
+    display: unset!important;
+}
+
+.main-copy{
+    position: absolute;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.582);
+    top:0px;
+    width: 100%;
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.5s;
+    display: none;
+}
+
+.main-copy.active{
+    opacity: 1;
+    transition: opacity 0.5s;
+    z-index: 2;
+}
+
+.custom-toast{
+    position: fixed;
+    bottom: 0;
+    right:-300px;
+    width: 250px;
+    max-width: 100%;
+    font-size: .875rem;
+    pointer-events: auto;
+    background-color: rgba(255,255,255,.85);
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.1);
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+    border-radius: 0.25rem;
+    transition: right 0.5s;
+}
+.custom-toast.active{
+    right:0px;
+    transition: right 0.5s;
+}
+.success .toast-header{
+    background-color: rgba(212,237,218,.85);
+    border-bottom-color: rgba(195,230,203,.85);
+    color: #155724!important;
+}
+.success .toast-body{
+    background-color: rgba(212, 237, 218, 0.671);
+    border-bottom-color: rgba(195,230,203,.85);
+}
+.error .toast-header{
+    color: #721c24;
+    background-color: rgba(248,215,218,.85);
+    border-bottom-color: rgba(245,198,203,.85);
+}
+.error .toast-body{
+    background-color: rgba(252,237,238,.85);
+    border-color: rgba(245,198,203,.85);
+}
+
+.main-modal-load{
+    position: absolute;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.01);
+    top:0px;
+    width: 100%;
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.5s;
+}
+
+.main-modal-load.active{
+    opacity: 1;
+    transition: opacity 0.5s;
+    z-index: 2;
+}
+
+.main-copy-load{
+    position: absolute;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.01);
+    top:0px;
+    width: 100%;
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.5s;
+}
+
+.main-copy-load.active{
+    opacity: 1;
+    transition: opacity 0.5s;
+    z-index: 2;
+}
+
+.spinner-border {
+    display: inline-block;
+    width: 5rem;
+    height:5rem;
+    vertical-align: text-bottom;
+    border: 0.3em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    -webkit-animation: spinner-border .75s linear infinite;
+    animation: spinner-border .75s linear infinite;
+}
+
+.err-msg{
+    color:red;
+    display: none;
+    margin-top: 2px;;
+}
+input.err{
+    border:solid 1px red;
+    color:red;
+}
+
+.err.form-control:focus {
+    background-color: #fff;
+    border-color: #ff8080;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
+}
+
+

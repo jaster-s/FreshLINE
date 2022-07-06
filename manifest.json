@@ -1,0 +1,33 @@
+{
+  "platform-version": "2.2",
+  "product": {
+    "freshdesk": {
+      "events": {
+        "onTicketCreate": {
+          "handler": "onTicketCreateCallback"
+        },
+        "onConversationCreate": {
+          "handler": "onConversationCreateCallback"
+        },
+        "onAppUninstall": {
+          "handler": "onAppUninstallCallback"
+        },
+        "onAppInstall": {
+          "handler": "onAppInstallCallback"
+        }
+      }
+    }
+  },
+  "whitelisted-domains": [
+    "https://*.ngrok.io",
+    "https://*.freshdesk.com"
+  ],
+  "engines": {
+    "node": "14.19.3",
+    "fdk": "8.3.3"
+  },
+  "dependencies": {
+    "crypto-js": "4.1.1",
+    "js-base64": "3.7.2"
+  }
+}

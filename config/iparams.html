@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+    integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <!-- <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="assets/serverConfig.js" text=""></script>
+  <script src="assets/iparams.js" text=""></script>
+  <link rel="stylesheet" href="./assets/iparams.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-base64@3.7.2/base64.min.js"></script>
+</head>
+
+<body>
+  <!-- activate key form -->
+  <div class="container" id="content-activate">
+    <div class="row" id="singIn">
+      <div class="col">
+        <h1>Sign in</h1>
+        <label class="form-label"> Domain </label>
+        <input type="text" class="form-control" id="domain" placeholder="https://domain.freshdesk.com" value="" />
+        <div class="err-msg domain"></div>
+        <label class="form-label"> API Key
+          <a title="How to find your api key" href="https://support.freshdesk.com/support/solutions/articles/215517-how-to-find-your-api-key"
+            target="_blank">
+            <i class="fas fa-question-circle"></i>
+          </a>
+        </label>
+        <input type="text" class="form-control" id="apiKey" value="" />
+        <div class="err-msg apiKey"></div>
+        <label class="form-label"> Activate Key </label>
+        <input type="text" class="form-control" id="activateKey" placeholder="XXXX-XXXX-XXXX-XXXX" value="" />
+        <div class="err-msg activateKey"></div>
+      </div>
+      <div class="col">
+        <div class="overlay-panel overlay-right">
+          <h1>Free Trial</h1>
+          <p>Enter your personal details and start journey with us</p>
+          <button type="button" class="btn btn-primary" id="btn-sign-Up" onclick="signUp()">
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row d-none" id="singUp">
+      <div class="col">
+        <div class="overlay-panel overlay-right">
+          <h1>LOGIN</h1>
+          <p>Enter your personal details and start journey with us</p>
+          <button type="button" class="btn btn-primary" id="btn-sign-In" onclick="signIn()">
+            Sign in
+          </button>
+        </div>
+      </div>
+      <div class="col">
+        <h1>Sign up</h1>
+        <label class="form-label"> Domain </label>
+        <input type="text" class="form-control" id="domainCreate" placeholder="https://domain.freshdesk.com" value="" />
+        <div class="err-msg domain"></div>
+
+        <label class="form-label"> API Key
+          <a title="How to find your api key" href="https://support.freshdesk.com/support/solutions/articles/215517-how-to-find-your-api-key"
+            target="_blank">
+            <i class="fas fa-question-circle"></i>
+          </a>
+        </label>
+        <input type="text" class="form-control" id="apiKeyCreate" value="" />
+        <div class="err-msg apiKey"></div>
+
+        <label class="form-label"> Company </label>
+        <input type="text" class="form-control" id="company" value="" />
+        <div class="err-msg company"></div>
+
+        <label class="form-label"> Email </label>
+        <input type="text" class="form-control" id="email" value="" />
+        <div class="err-msg email"></div>
+
+        <label class="form-label"> First Name </label>
+        <input type="text" class="form-control" id="firstName" value="" />
+        <div class="err-msg firstName"></div>
+
+        <label class="form-label"> Last Name </label>
+        <input type="text" class="form-control" id="lastName" value="" />
+        <div class="err-msg lastName"></div>
+
+        <label class="form-label"> Phone </label>
+        <input type="text" class="form-control" id="phone" value="" />
+        <div class="err-msg phone"></div>
+        <center>
+          <button type="button" class="btn btn-primary" id="btn-sign-In" onclick="CreateUser()">
+            create user
+          </button>
+        </center>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="p-5" id="content-activate">
+    <div class="ui-form">
+      <div class="p-5" style="width: 450px">
+        <h3>Install Application</h3>
+        <p class="text-cneter">Freshdesk line integration</p>
+        <div class="mb-3">
+          <label class="form-label"> Domain </label>
+          <input type="text" class="form-control" id="domain" placeholder="https://domain.freshdesk.com" value="" />
+          <div class="err-msg domain"></div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label"> API Key
+            <a title="How to find your api key" href="https://support.freshdesk.com/support/solutions/articles/215517-how-to-find-your-api-key"
+              target="_blank">
+              <i class="fas fa-question-circle"></i>
+            </a>
+          </label>
+          <input type="text" class="form-control" id="apiKey" value="" />
+          <div class="err-msg apiKey"></div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label"> Activate Key </label>
+          <input type="text" class="form-control" id="activateKey" placeholder="XXXX-XXXX-XXXX-XXXX" value="" />
+          <div class="err-msg activateKey"></div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- table -->
+  <div class="p-5" id="content-table">
+    <h3>LINE Official Account</h3>
+    <div>
+      <div class="container" style="max-width:740px">
+        <div class="row align-items-start">
+          <div class="col" style="left: -15px;">
+            <span id="expiration-date"></span>
+          </div>
+          <div class="col text-right">
+            <button class="btn btn-primary" id="add-more-btn" onclick="addMore()">
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <table class="table table-hover" id="list-table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Client ID</th>
+              <th scope="col" class="text-center">Group/Agent</th>
+              <th scope="col" class="text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody id="tblBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- form -->
+  <div id="content-form" class="p-5">
+    <form id="form-main">
+      <div class="form-block">
+        <input type="hidden" id="LINE_obj_Id" value="" />
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Example: Alex" />
+          <div class="err-msg name"></div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Client ID
+            <a title="How to find your Channel ID" href="https://developers.line.biz/en/faq/#where-can-i-find-channel-id" target="_blank">
+              <i class="fas fa-question-circle"></i>
+            </a>
+          </label>
+          <input type="text" class="form-control" id="client_id" />
+          <div class="err-msg client_id"></div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label"> Client Secret
+            <a title="How to find your Channel Secret" href="https://developers.line.biz/en/faq/#where-can-i-find-channel-id" target="_blank">
+              <i class="fas fa-question-circle"></i>
+            </a>
+          </label>
+          <input class="form-control" id="client_secret" type="password" />
+          <div class="err-msg client_secret"></div>
+        </div>
+
+        <label class="form-label"> Assignee </label>
+        <div class="d-flex mb-3">
+          <div>
+            <label class="form-label"> Group </label>
+            <select name="" id="group_name" class="form-control"></select>
+          </div>
+          <div class="ml-2">
+            <label class="form-label"> Agent </label>
+            <select name="" id="agent_name" class="form-control"></select>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label"> Auto message reply </label>
+          <input class="form-control" id="auto_reply" type="text" placeholder=""
+            value="ทางเราได้รับข้อความ ของคุณ เรียบร้อยแล้ว ทางเราจะรีบติดต่อกลับให้เร็วที่สุด ขอแสดงความนับถือ" />
+          <div class="err-msg auto_reply"></div>
+          <label class="form-label"> Recover Email </label>
+          <input class="form-control" id="recoveryMail" type="email" placeholder="example@gmail.com" />
+          <div class="err-msg email"></div>
+        </div>
+      </div>
+    </form>
+    <div class="text-center mt-2">
+      <button id="backToContentTable" class="btn btn-light mr-3">
+        Cancel
+      </button>
+      <button type="button" class="btn btn-primary" id="btn-form-add" onclick="addLine()">
+        Add
+      </button>
+      <button type="button" class="btn btn-primary" id="btn-form-edit" onclick="editLine()">
+        Save
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="main-modal">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" id="x-cancel-modal">
+            &times;
+          </button>
+          <h4 class="modal-title">Notification</h4>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure to delete this record?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="cancel-modal">
+            Cancel
+          </button>
+          <button type="button" class="btn btn-primary" style="background-color: rgba(255, 66, 82, 0.85);" id="confirmDelete" data-dismiss="modal">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copy -->
+  <div class="main-copy">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" id="x-cancel-copy">
+            &times;
+          </button>
+          <h4 class="modal-title">Webhook URL</h4>
+        </div>
+        <div class="modal-body">
+          <input type="text" style="width:89%;" id="webHook">
+          <button type="button" class="btn btn-info" style="min-width:20px" id="copy" onclick="copyText()"><i class="fas fa-copy"></i></button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary " style="background-color: rgba(0, 89, 15, 0.85);" id="confirmCopy" data-dismiss="modal">
+            Ok
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- loading -->
+  <div class="main-modal-load d-flex align-items-center justify-content-center" id="main-load">
+    <div class="spinner-border text-primary" role="status"></div>
+  </div>
+
+
+  <!-- toast -->
+  <div class="custom-toast" style="z-index: 11">
+    <div class="toast-header">Notification</div>
+    <div class="toast-body"></div>
+  </div>
+</body>
+
+</html>
+
+<script>
+  let returnConfig;
+  let defaultConfig;
+
+  async function validate() {
+    let isValid = false;
+    let api_key;
+    let sub_Domain;
+    let activate_Key;
+    let company;
+    let mail;
+    let firstName;
+    let lastName;
+    let phone;
+    let freshdeskID;
+
+    if (singUp === false) {
+      if ((!validateActivateField()) && (defaultConfig === true)) {
+        isValid = true;
+        return isValid;
+      } else if ((!validateActivateField()) && (defaultConfig === false)) {
+        return isValid;
+      }
+
+      api_key = $("#apiKey").val().trim();
+      activate_Key = $("#activateKey").val().trim();
+      sub_Domain = $("#domain").val().trim();
+
+    }
+    else {
+      if ((!validateCreateField()) && (defaultConfig === true)) {
+        isValid = true;
+        return isValid;
+      } else if ((!validateCreateField()) && (defaultConfig === false)) {
+        return isValid;
+      }
+
+      api_key = $("#apiKeyCreate").val().trim();
+      sub_Domain = $("#domainCreate").val().trim();
+      company = $("#company").val().trim();
+      mail = $("#email").val().trim();
+      firstName = $("#firstName").val().trim();
+      lastName = $("#lastName").val().trim();
+      phone = $("#phone").val().trim();
+      activate_Key = ACTIVATE_KEY
+    }
+
+    if (sub_Domain.substring(sub_Domain.length - 1, sub_Domain.length) != "/") {
+      sub_Domain = sub_Domain + "/";
+    }
+
+    let options = {
+      headers: { "ActivateKey": `${activate_Key}` }
+    }
+    let body = {
+      sub_domain: sub_Domain,
+      api_key: api_key,
+      activate_key: activate_Key,
+    };
+    url = `${SERVER}user/activate_key/verify`
+    await axios.post(url, body, options)
+      .then(
+        function (res) {
+          if (res.data.activate_key === true) {
+            if (res.data.install === false) {
+              if (res.data.domain === true) {
+                isValid = true;
+                freshdeskID = res.data.freshdesk_id;
+              } else {
+                openToast('error', 'Domain or Api key is not valid');
+              }
+            } else {
+              openToast('error', 'The activate key has been activated with another Freshdesk.');
+            }
+          } else {
+            openToast('error', 'Activate Key is not valid');
+          }
+        })
+      .catch((res) => {
+        openToast('error', 'Failed to connected API')
+      });
+
+    if (isValid === true) {
+      returnConfig = {
+        __meta: {
+          secure: ["api_key"],
+        },
+        api_key,
+        activate_Key,
+        sub_Domain,
+        freshdeskID,
+      };
+    }
+    return isValid;
+  }
+
+  function postConfigs() {
+    return returnConfig;
+  }
+
+  async function getConfigs(configs) {
+    defaultConfig = true
+    $("#content-activate").hide();
+    ACTIVATE_KEY = configs.activate_Key;
+    Domain = configs.sub_Domain;
+    API_KEY = configs.api_key;
+    FreshdeskID = configs.freshdeskID;
+    $("#main-load").addClass("active");
+    groupData = await getDataAssignee("groups");
+    agentData = await getDataAssignee("agents");
+    initDropDown();
+    await getLine();
+    $("#content-table").show();
+  }
+</script>
