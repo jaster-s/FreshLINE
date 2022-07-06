@@ -1,4 +1,3 @@
-// const server = "https://freshdesk-api.alldigit.io/"
 const server = "https://903e-58-136-16-163.ngrok.io/"
 const CryptoJS = require('crypto-js');
 const { Base64 } = require('js-base64');
