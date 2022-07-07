@@ -1,4 +1,4 @@
-const server = "https://903e-58-136-16-163.ngrok.io/"
+const server = "https://6f82-58-136-199-93.ngrok.io"
 const CryptoJS = require('crypto-js');
 const { Base64 } = require('js-base64');
 
