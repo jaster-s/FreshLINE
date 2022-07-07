@@ -1,4 +1,4 @@
-const server = "https://6f82-58-136-199-93.ngrok.io"
+const server_url = "https://6f82-58-136-199-93.ngrok.io"
 const CryptoJS = require('crypto-js');
 const { Base64 } = require('js-base64');
 
@@ -24,7 +24,7 @@ exports = {
                 headers: { "x-signature": `${signature_user}` },
                 body: reqBody
               }
-              url = `${server}freshdesk_webhook/create`
+              url = `${server_url}freshdesk_webhook/create`
               $request.post(url, options)
               
             }
@@ -52,7 +52,7 @@ exports = {
                 headers: { "x-signature": `${signature_user}` },
                 body: reqBody
               }
-              url = `${server}freshdesk_webhook/reply`
+              url = `${server_url}freshdesk_webhook/reply`
               $request.post(url, options);
             }
           }
@@ -68,7 +68,7 @@ exports = {
       headers: { "x-signature": `${signature_user}` },
       body: reqBody
     }
-    url = `${server}freshdesk_webhook/appInstall`
+    url = `${server_url}freshdesk_webhook/appInstall`
     $request.post(url, options)
     renderData();
   },
@@ -81,7 +81,7 @@ exports = {
       headers: { "x-signature": `${signature_user}` },
       body: reqBody
     }
-    url = `${server}freshdesk_webhook/appUninstall`
+    url = `${server_url}freshdesk_webhook/appUninstall`
     $request.post(url, options)
     renderData();
   }
