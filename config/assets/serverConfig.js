@@ -1,4 +1,4 @@
 
 const config = {
-    "server_url": "https://903e-58-136-16-163.ngrok.io/"
+    "server_url": "https://6f82-58-136-199-93.ngrok.io"
 }
